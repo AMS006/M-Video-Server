@@ -21,7 +21,7 @@ exports.getAllUserHistory = async(req,res) =>{
             return res.status(404).json({message:"Invalid Request"})
         const {_id} = await jwt.verify(token,process.env.SECRET_KEY);
 
-        const history = await HistoryModel.find({user:_id}).populate('user card')
+        const history = await HistoryModel.find({user:_id}).populate('card')
 
         return res.status(200).json({history});
 

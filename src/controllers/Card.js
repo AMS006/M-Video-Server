@@ -1,4 +1,5 @@
 const cardModel = require('../models/Cards')
+const historyModel = require('../models/History')
 exports.createCard = async(req,res) =>{
     try {
         const {code,title,bucket} = req.body
@@ -36,7 +37,7 @@ exports.deleteCard = async(req,res) =>{
     try {
         const {id} = req.params
         const card = await cardModel.findByIdAndDelete(id);
-
+        await historyModel.deleteMany({card:id})
         return res.status(200).json({message:"Deleted"})
     } catch (error) {
         return res.status(500).json({message:error.message})

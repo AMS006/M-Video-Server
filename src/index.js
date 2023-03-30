@@ -13,7 +13,7 @@ app.use(cookieparser())
 dotenv.config()
 
 app.use(cors({
-    origin:'http://localhost:3000',
+    origin:'https://m-video-client.vercel.app/',
     methods: ['GET', 'PUT', 'POST','DELETE'], 
     allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'], 
     credentials: true,

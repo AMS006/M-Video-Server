@@ -2,7 +2,7 @@ const cors = require('cors')
 const express = require('express')
 const dotenv = require('dotenv')
 const cookieparser = require('cookie-parser')
-const { default: mongoose } = require('mongoose')
+const mongoose  = require('mongoose')
 const user = require('./routes/User')
 const bucket = require('./routes/Bucket')
 const card = require('./routes/Card')
@@ -17,18 +17,14 @@ app.use(cors({
     credentials: true,
     optionSuccessStatus:200
 }))
-// app.get("/", (req, res) => {
-//     res.setHeader("Access-Control-Allow-Origin", "*")
-//     res.setHeader("Access-Control-Allow-Credentials", "true");
-//     res.setHeader("Access-Control-Max-Age", "1800");
-//     res.setHeader("Access-Control-Allow-Headers", "content-type");
-//     res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" );
-//      });
+
 app.use('/user',user)
 app.use('/bucket',bucket)
 app.use('/card',card)
 app.use('/history',history)
-
+app.get('/',(req,res)=>{
+    res.json({message:"Server Is Running"})
+})
 app.listen(4000,()=>{
     console.log("Server is Running on port 4000")
     mongoose.connect(process.env.MONGO_URI,{

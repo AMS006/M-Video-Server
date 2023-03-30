@@ -13,17 +13,12 @@ app.use(cookieparser())
 dotenv.config()
 
 app.use(cors({
-    origin:'https://m-video-client.vercel.app',
+    origin:'https://m-video-client.vercel.app/',
     methods: ['GET', 'PUT', 'POST','DELETE'], 
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'],
     credentials: true
 }))
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', "https://m-video-client.vercel.app");
-    res.header('Access-Control-Allow-Headers', true);
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    next();
-  });
+
 app.use('/user',user)
 app.use('/bucket',bucket)
 app.use('/card',card)

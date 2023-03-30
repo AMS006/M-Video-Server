@@ -1,4 +1,4 @@
-const cardModel = require('../src/models/Cards')
+const cardModel = require('../models/Cards')
 exports.createCard = async(req,res) =>{
     try {
         const {code,title,bucket} = req.body

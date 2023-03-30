@@ -1,5 +1,5 @@
 
-const HistoryModel = require('../src/models/History')
+const HistoryModel = require('../models/History')
 const jwt = require('jsonwebtoken')
 exports.addUserHistory = async(req,res) =>{
     try {

@@ -1,4 +1,4 @@
-const bucketModel = require('../src/models/Buckets')
+const bucketModel = require('../models/Buckets')
 const jwt = require('jsonwebtoken')
 exports.createBucket = async(req,res) =>{
     try {

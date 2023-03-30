@@ -12,12 +12,7 @@ app.use(express.json())
 app.use(cookieparser())
 dotenv.config()
 
-app.use(cors({
-    origin:['https://m-video-client.vercel.app/','http://localhost:3000'],
-    methods: ['GET', 'PUT', 'POST','DELETE'], 
-    allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'],
-    credentials: true
-}))
+app.use(cors())
 
 app.use('/user',user)
 app.use('/bucket',bucket)

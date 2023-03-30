@@ -5,7 +5,7 @@
   "main": "index.js",
   "proxy": "http://localhost:3000",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "Anas Sain",
   "license": "ISC",

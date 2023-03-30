@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "proxy": "http://localhost:3000",
   "scripts": {
-    "start": "node index.js"
+    "start": "node ./src/index.js"
   },
   "author": "Anas Sain",
   "license": "ISC",

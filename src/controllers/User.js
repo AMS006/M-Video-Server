@@ -53,7 +53,7 @@ exports.loginUser = async(req,res) =>{
 }
 exports.logoutUser = async(req,res) =>{
     try {
-        return res.clearCookie('token').send('cookie cleared')
+        return res.cookie('token',null).json({message:"Logout Successfull"})
     } catch (error) {
         return res.status(500).json({message:error.message});
     }

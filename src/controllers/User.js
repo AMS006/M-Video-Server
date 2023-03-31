@@ -56,9 +56,11 @@ exports.logoutUser = async(req,res) =>{
         const option = {
             expires: new Date(Date.now())
         }
-        res.clearCookie('token')
-        res.end()
-        // res.json({message:"Logout Successfull"})
+        res.cookie('token', '', {
+            domain: 'https://wandering-trench-coat-tick.cyclic.app',
+            maxAge: 0,
+            overwrite: true,
+          });
     } catch (error) {
         return res.status(500).json({message:error.message});
     }

@@ -54,9 +54,9 @@ exports.loginUser = async(req,res) =>{
 exports.logoutUser = async(req,res) =>{
     try {
         const option = {
-            expires: new Date(Date.now()),
+            expires: new Date(Date.now())
         }
-        return res.cookie('token',null,option).json({message:"Logout Successfull"})
+        res.cookie('token',null,option).json({message:"Logout Successfull"})
     } catch (error) {
         return res.status(500).json({message:error.message});
     }

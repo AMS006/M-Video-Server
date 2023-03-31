@@ -56,21 +56,23 @@ exports.logoutUser = async(req,res) =>{
         const option = {
             expires: new Date(Date.now())
         }
-        res.cookie('token',null,option).json({message:"Logout Successfull"})
+        res.clearCookie('token')
+        res.json({message:"Logout Successfull"})
     } catch (error) {
         return res.status(500).json({message:error.message});
     }
 }
 exports.getUserDetails = async(req,res) =>{
     try {
-    const {token} = req.cookies
-    const {_id} = await jwt.verify(token,process.env.SECRET_KEY)
-    const user = await userModel.findById(_id);
+        const {token} = req.cookies
+        console.log(token)
+        const {_id} = await jwt.verify(token,process.env.SECRET_KEY)
+        const user = await userModel.findById(_id)
         
-      if(!user)
-        return res.status(404).json({message:"No user found"});
-      return res.status(200).json({user});
+        if(!user)
+            return res.status(404).json({message:"No user found"});
+        return res.status(200).json({user});
     } catch (error) {
-      return res.status(500).json({success:false})
+        return res.status(500).json({message:error.message})
     }
 }

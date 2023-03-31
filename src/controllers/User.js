@@ -57,7 +57,8 @@ exports.logoutUser = async(req,res) =>{
             expires: new Date(Date.now())
         }
         res.clearCookie('token')
-        res.json({message:"Logout Successfull"})
+        res.end()
+        // res.json({message:"Logout Successfull"})
     } catch (error) {
         return res.status(500).json({message:error.message});
     }
